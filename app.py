@@ -283,8 +283,8 @@ def main():
 
 						st.markdown("#### Apply Discounts:")
 						mygrid_3 = make_grid(2,4)
-						feature_2_1 = mygrid_3[0][0].checkbox("Add Pricing x")
-						feature_2_2 = mygrid_3[0][1].checkbox("Add Pricing y")
+						feature_2_1 = mygrid_3[0][0].checkbox("Add Discount")
+						feature_2_2 = mygrid_3[0][1].checkbox("Add Discount")
 						submitted = st.button(label="submit")
 						if submitted:
 							st.text("Calculation done, please see the result tab.")
@@ -564,7 +564,9 @@ def main():
 						st.markdown("<p>A finance charge of 1.5% will be made on unpaid balances after 30 days.</p>", unsafe_allow_html=True)
 
 						path = os.path.abspath('saving.html')
-						converter.convert(f'file:///{path}', f'sample.pdf', print_options={"scale": 0.94, "pageRanges" : "1-2"} )
+						converter.convert(f'file:///{path}', f'sample.pdf', 
+									#		print_options={"scale": 0.94, "pageRanges" : "1-2"} 
+											)
 
 					#	converter.convert(f'file:///{path}', 'sample.pdf')
 						# with open("saving.html",'r') as f: 
