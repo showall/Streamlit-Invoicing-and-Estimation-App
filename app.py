@@ -21,9 +21,9 @@ from pathlib import Path
 import pdfkit
 import os
 from pyhtml2pdf import converter
-import chromedriver_autoinstaller as chromedriver
+#import chromedriver_autoinstaller as chromedriver
 
-chromedriver.install()
+#chromedriver.install()
 
 STREAMLIT_STATIC_PATH = Path(st.__path__[0]) / 'static'
 CSS_PATH = (STREAMLIT_STATIC_PATH / "assets/css")
@@ -122,24 +122,27 @@ def main():
 						# code to draw the single continent data
 			with st.container():
 				if option=='Customer1':
-					st.subheader("Customer1")
+					st.subheader("    Customer1")
 
-					st.write('please provide a file with two columns : "DATE","USAGE" ')
-
-
+					st.write('    please provide a file with two columns : "DATE","USAGE" ')
 					checkbox = st.checkbox("use_sample_data")
+					
+
 					if checkbox == True :
-						data=pd.read_csv("data.csv", skiprows=0, parse_dates= ["DATE"], dayfirst=True)
+						data1 = True
 					else :
-						data=st.file_uploader("Upload dataset:",type=['csv','xlsx','txt','json'])
-					if data is not None:
+						data1 = None 
+					data=st.file_uploader("Upload dataset:",type=['csv','xlsx','txt','json'])
+					if data is not None or data1 is not None:
+						if checkbox == True :
+							df=pd.read_csv("data.csv", skiprows=0, parse_dates= ["DATE"], dayfirst=True)						
+						if checkbox == False :
+							df=pd.read_csv(data, skiprows=0, parse_dates= ["DATE"], dayfirst=True)
 						st.success("Data successfully loaded")
-						df=pd.read_csv(data, skiprows=0, parse_dates= ["DATE"], dayfirst=True)
 						st.dataframe(df.head(50))
 						st.markdown("### Add Pricing Features:")
 						#with st.form("my form"):
 						st.markdown("#### Rate Prices:")
-
 						add_more_pricing = True
 						data_dict = {}
 						price_data = {}
