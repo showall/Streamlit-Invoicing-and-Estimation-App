@@ -21,6 +21,9 @@ from pathlib import Path
 import pdfkit
 import os
 from pyhtml2pdf import converter
+import chromedriver_autoinstaller as chromedriver
+
+chromedriver.install()
 
 STREAMLIT_STATIC_PATH = Path(st.__path__[0]) / 'static'
 CSS_PATH = (STREAMLIT_STATIC_PATH / "assets/css")
