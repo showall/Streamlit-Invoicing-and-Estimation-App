@@ -1,0 +1,89 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Invoice</title>
+		<link rel="stylesheet" href="assets/css/style.css">
+		<link rel="license" href="https://www.opensource.org/licenses/mit-license/">
+		<script src="scripts.js"></script>
+	</head>
+	<body>
+		<header>
+			<h3>Customer Sales Report</h3>
+			<address contenteditable>
+				<p>Good Good Company</p>
+				<p>101 Better Avenue<br>Awesome County</p>
+				<p>(+65) 1111-1234</p>
+			</address>
+			<span><img alt="" src="logo.png"><input type="file" accept="image/*"></span>
+		</header>
+		<article>
+			<h4>Customer</h4>
+			<address contenteditable>
+				<p>{{Some_Company}}<br>Address</p>
+			</address>
+			<table class="meta">
+				<tr>
+					<th><span contenteditable>Invoice #</span></th>
+					<td><span contenteditable>{{invoice_number}}</span></td>
+				</tr>
+				<tr>
+					<th><span contenteditable>Date</span></th>
+					<td><span contenteditable>{{date_generated}}</span></td>
+				</tr>
+				<tr>
+					<th><span contenteditable>Billing Period</span></th>
+					<td><span contenteditable>{{from_when}} to {{to_when}}</span></td>
+				</tr>
+				<tr>
+					<th><span contenteditable>Amount Due</span></th>
+					<td><span id="prefix" contenteditable>$</span><span>{{amount_due}}</span></td>
+				</tr>
+			</table>
+			<table class="inventory">
+				<thead>
+					<tr>
+						<th><span contenteditable>Timeband</span></th>
+						<th><span contenteditable>Tier</span></th>
+						<th><span contenteditable>Plan</span></th>
+						<th><span contenteditable>Quantity</span></th>
+						<th><span contenteditable>Total</span></th>
+						<th><span contenteditable>Price</span></th>
+					</tr>
+				</thead>
+				<tbody>	{% for i in datafile.values() %}
+						<tr>
+							<td><a class="cut">-</a><span contenteditable>{{i.get("Timeband")}}</span></td>
+							<td><span contenteditable>{{i.get("Tier")}}</span></td>
+							<td><span contenteditable>{{i.get("Plan")}}</span></td>
+							<td><span contenteditable>{{i.get("Volume_Used")}}</span></td>
+							<td><span data-prefix>S$</span><span contenteditable>{{i.get("Rate")}}</span></td>
+							<td><span data-prefix>S$</span><span contenteditable>{{i.get("Subtotal")}}</span></td>
+						</tr> {% endfor %}
+					<tr>
+					</tr>
+				</tbody>
+			</table>
+			<table class="balance">
+				<tr>
+					<th><span contenteditable>Total</span></th>
+					<td><span data-prefix>$</span><span>{{total}}</span></td>
+				</tr>
+				<tr>
+					<th><span contenteditable>Amount Paid</span></th>
+					<td><span data-prefix>$</span><span contenteditable>0.00</span></td>
+				</tr>
+				<tr>
+					<th><span contenteditable>Balance Due</span></th>
+					<td><span data-prefix>$</span><span>{{total}}</span></td>
+				</tr>
+			</table>
+		</article>
+		<!-- <aside>
+			<h1><span contenteditable>Additional Notes</span></h1>
+			<div contenteditable>
+				<p>A finance charge of 1.5% will be made on unpaid balances after 30 days.</p>
+				<p>A finance charge of 1.5% will be made on unpaid balances after 30 days.</p>
+			</div>
+		</aside> -->
+	</body>
+</html>
