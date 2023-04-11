@@ -124,8 +124,14 @@ def main():
 				if option=='Customer1':
 					st.subheader("Customer1")
 
-					data=st.file_uploader("Upload dataset:",type=['csv','xlsx','txt','json'])
+					st.write('please provide a file with two columns : "DATE","USAGE" ')
 
+
+					checkbox = st.checkbox("use_sample_data")
+					if checkbox == True :
+						df=pd.read_csv("data.csv", skiprows=0, parse_dates= ["DATE"], dayfirst=True)
+					else :
+						data=st.file_uploader("Upload dataset:",type=['csv','xlsx','txt','json'])
 					if data is not None:
 						st.success("Data successfully loaded")
 						df=pd.read_csv(data, skiprows=0, parse_dates= ["DATE"], dayfirst=True)
@@ -584,12 +590,12 @@ def main():
 						# 	PDFbyte = pdf_file.read()
 
 
-						with open("saving.html", "rb") as pdf_file:
+						with open("sample.pdf", "rb") as pdf_file:
 							PDFbyte = pdf_file.read()
 
 						st.download_button(label="Export_Report",
 											data=PDFbyte,
-											file_name="test.pdf",
+											file_name="Invoice.pdf",
 											mime='application/octet-stream')
 
 
