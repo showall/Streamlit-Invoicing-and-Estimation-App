@@ -574,15 +574,18 @@ def main():
 
 						#OPTIONAL
 
-						path_wkhtmltopdf = "wkhtmltopdf/bin/wkhtmltopdf.exe"
-						config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
-						pdf = pdfkit.from_string(html_data_for_report, "output.pdf", configuration=config,  options={"enable-local-file-access": ""})
+						# path_wkhtmltopdf = "wkhtmltopdf/bin/wkhtmltopdf.exe"
+						# config = pdfkit.configuration(wkhtmltopdf=path_wkhtmltopdf)
+						# pdf = pdfkit.from_string(html_data_for_report, "output.pdf", configuration=config,  options={"enable-local-file-access": ""})
 						# to create download on clicking
 
 
-						with open("sample.pdf", "rb") as pdf_file:
-							PDFbyte = pdf_file.read()
+						# with open("sample.pdf", "rb") as pdf_file:
+						# 	PDFbyte = pdf_file.read()
 
+
+						with open("saving.html", "rb") as pdf_file:
+							PDFbyte = pdf_file.read()
 
 						st.download_button(label="Export_Report",
 											data=PDFbyte,
