@@ -283,8 +283,8 @@ def main():
 
 						st.markdown("#### Apply Discounts:")
 						mygrid_3 = make_grid(2,4)
-						feature_2_1 = mygrid_3[0][0].checkbox("Add Discount")
-						feature_2_2 = mygrid_3[0][1].checkbox("Add Discount")
+						feature_2_1 = mygrid_3[0][0].checkbox("Add Discount 1")
+						feature_2_2 = mygrid_3[0][1].checkbox("Add Discount 2")
 						submitted = st.button(label="submit")
 						if submitted:
 							st.text("Calculation done, please see the result tab.")
