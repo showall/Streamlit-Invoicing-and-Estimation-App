@@ -563,17 +563,14 @@ def main():
 						st.markdown("<h4>Notes</h4>", unsafe_allow_html=True)
 						st.markdown("<p>A finance charge of 1.5% will be made on unpaid balances after 30 days.</p>", unsafe_allow_html=True)
 
-						path = os.path.abspath('saving.html')
-						converter.convert(f'file:///{path}', f'sample.pdf'
-									#		, print_options={"scale": 0.94, "pageRanges" : "1-2"} 
-											)
 
-					#	converter.convert(f'file:///{path}', 'sample.pdf')
-						# with open("saving.html",'r') as f: 
-						# 	html_data = f.read()
-						# st.markdown(html_data, unsafe_allow_html=True)		
-						# components.html(html_data,height=800, width=1000)
-						# st.components.v1.html(html_data,height=800, width=1000)
+						###############REMOVE IT IF DEPLOYING FROM PROPRIETARY PLATFORM THEN CAN DOWNLOAD PDF DIRECTLY 
+
+						# path = os.path.abspath('saving.html')
+						# converter.convert(f'file:///{path}', f'sample.pdf'
+						# 					, print_options={"scale": 0.94, "pageRanges" : "1-2"} 
+						# 					)
+
 
 						#OPTIONAL
 
@@ -583,9 +580,9 @@ def main():
 						# to create download on clicking
 
 
-
 						with open("sample.pdf", "rb") as pdf_file:
 							PDFbyte = pdf_file.read()
+
 
 						st.download_button(label="Export_Report",
 											data=PDFbyte,
